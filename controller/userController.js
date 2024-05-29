@@ -44,7 +44,7 @@ export const forgetPassword = async (req, res) => {
           uppercase: false,
           excludeSimilarCharacters: true,
         });
-        console.log(password);
+        // console.log(password);
         let encryptedPassword = bcrypt.hashSync(password, 10);
         let response = await UserUtils.forgetPassword({
           email,
@@ -63,7 +63,7 @@ export const forgetPassword = async (req, res) => {
 
         return res.status(200).json({
           status: true,
-          data: password,
+          data: "password Updated Successfully",
         });
       } else {
         let encryptedPassword = bcrypt.hashSync(newPassword, 10);
@@ -73,7 +73,7 @@ export const forgetPassword = async (req, res) => {
         });
         return res.status(200).json({
           status: true,
-          data: response,
+          data: "password Updated Successfully",
         });
       }
     } else {
