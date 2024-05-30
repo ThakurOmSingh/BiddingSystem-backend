@@ -43,20 +43,16 @@ export const getItemBids = async (req, res) => {
 
 export const newItemBid = async (req, res) => {
   try {
-    let { bid_amount, userId } = req.body;
+    let { bid_amount, user_id } = req.body;
     let { id } = req.params;
     let data = {
       item_id: parseInt(id),
-      user_id: parseInt(userId),
+      user_id: parseInt(user_id),
       bid_amount: parseFloat(bid_amount),
     };
+    
 
-    if (isNaN(data.item_id) || isNaN(data.user_id) || isNaN(data.bid_amount)) {
-      return res.status(400).json({
-        status: false,
-        error: "Invalid input data",
-      });
-    }
+
 
     let response = await bidUtills.newItemBid({ data });
 

@@ -2,6 +2,7 @@ import prisma from "../utils/database.js";
 
 export const getNotifications = async (req, res) => {
   let { user_id } = req.query;
+
   user_id = parseInt(user_id);
 
   try {
@@ -11,7 +12,7 @@ export const getNotifications = async (req, res) => {
       data: notifications,
     });
   } catch (error) {
-    console.log(error);
+
     return res.status(500).json({
       status: false,
       error: 'Failed to fetch notifications',
@@ -32,7 +33,7 @@ export const markNotificationsRead = async (req, res) => {
       data: response,
     });
   } catch (error) {
-    console.log(error);
+
     return res.status(500).json({
       status: false,
       error: 'Failed to mark notifications as read',

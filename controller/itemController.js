@@ -5,8 +5,10 @@ import prisma from "../utils/database.js";
 export const itemCreate = async (req, res) => {
   try {
     let { ownerId, name, description, starting_price, year, month, day, hours, minutes, seconds } = req.body;
+
     const specificDate = new Date(year, month - 1, day, hours, minutes, seconds);
     const formattedEndTime = specificDate.toISOString();
+
     let data = {
       ownerId: parseInt(ownerId),
       name,

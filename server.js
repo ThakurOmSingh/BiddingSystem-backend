@@ -27,13 +27,12 @@ const createServer = (app) => {
         user_id: user_id,
         bid_amount: bid_amount,
       };
-      console.log("data");
-      console.log(data);
+
 
       try {
         // Check if the user is outbid
         let highestBid = await bidUtills.highestBid({ item_id });
-        console.log("HIGHEST BID_______________________________________________");
+
         if (highestBid && highestBid.bid_amount < bid_amount) {
           // Notify the previous highest bidder that they have been outbid
           let data = {
@@ -52,7 +51,7 @@ const createServer = (app) => {
           id: user_id,
         });
 
-        console.log("newBidCreated");
+       
 
         // Update current price of the item in the database
         await itemUtills.itemUpdate({ id: item_id, curent_price: bid_amount });
